@@ -1,6 +1,7 @@
 package com.example.firstproject.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Column;
@@ -22,7 +23,5 @@ public class Article {
     @Column
     private String content;
 
-    public Article() {
-
-    }
+    protected Article() {}
 }
