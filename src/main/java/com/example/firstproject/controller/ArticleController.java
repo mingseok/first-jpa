@@ -93,13 +93,29 @@ public class ArticleController {
         // 2-1: DB에서 기존 데이터를 가져온다
         Article target = articleRepository.findById(articleEntity.getId()).orElse(null);
 
-        // 2-2: 기존 데이터에 값을 갱신한다
+        // 2-2: 기존 데이터가 있다면 값을 갱신한다
         if (target != null) {
             articleRepository.save(articleEntity); // 엔티티가 DB로 갱신된다
         }
 
         // 3: 수정 결과 페이지로 리다이렉트 한다
         return "redirect:/articles/" + articleEntity.getId();
+    }
+
+    @GetMapping("/articles/{id}/delete")
+    public String delete(@PathVariable Long id) {
+        log.info("삭제 요청이 들어왔습니다");
+
+        // 1: 삭제 대상을 가져온다
+        Article target = articleRepository.findById(id).orElse(null);
+
+        // 2: 대상을 삭제 한다
+        if (target != null) {
+            articleRepository.delete(target);
+        }
+
+        // 3: 결과 페이지로 리다이렉트 한다
+        return "redirect:/articles";
     }
 
 }
