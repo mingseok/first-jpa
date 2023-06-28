@@ -4,10 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @AllArgsConstructor
@@ -15,7 +12,7 @@ import javax.persistence.Id;
 @Getter
 public class Article {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) // 괄호까지 작성해줘야 db가 id를 자동생성하게 된다
     private Long id;
 
     @Column
@@ -25,4 +22,14 @@ public class Article {
     private String content;
 
     protected Article() {}
+
+    public void patch(Article article) {
+        if (article.title != null) {
+            this.title = article.title;
+        }
+
+        if (article.content != null) {
+            this.content = article.content;
+        }
+    }
 }
