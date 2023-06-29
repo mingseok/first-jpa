@@ -1,5 +1,6 @@
 package com.example.firstproject.entity;
 
+import com.example.firstproject.dto.CommentDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,12 @@ public class Comment {
     @Column
     private String body;
 
+    public static Comment createComent(CommentDto dto, Article article) {
+        return new Comment(
+                dto.getId(),
+                article,
+                dto.getNickname(),
+                dto.getBody()
+        );
+    }
 }
