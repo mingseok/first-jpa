@@ -36,4 +36,15 @@ public class Comment {
                 dto.getBody()
         );
     }
+
+    public void patch(CommentDto dto) {
+        // 객체 갱신
+        if (dto.getNickname() != null) {
+            this.nickname = dto.getNickname();
+        }
+
+        if (dto.getBody() != null) {
+            this.body = dto.getBody();
+        }
+    }
 }
