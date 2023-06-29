@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // 일반 컨트롤러와 다른점은 -> Rest는 데이터(JSON)을 반환한다
+@RestController // 일반 컨트롤러와 다른점은 ->  Rest는 데이터(JSON)을 반환한다
 public class ArticleApiController {
 
     @Autowired // DI
