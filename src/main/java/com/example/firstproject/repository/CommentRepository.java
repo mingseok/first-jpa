@@ -16,5 +16,4 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
     // 특정 닉네임의 모든 댓글 조회
     List<Comment> findByNickname(String nickname);
 
-
 }
